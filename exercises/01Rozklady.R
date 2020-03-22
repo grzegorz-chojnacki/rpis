@@ -176,8 +176,8 @@ plot(1:5,c(1,-1,1,-1,1))
 plot(1:5,c(1,-1,1,-1,1),ylim=c(-2,2))    #zmieniamy zakres osi oy
 plot(1:5,c(1,-1,1,-1,1),ylim=c(-2,2),type='l',col='blue')
                                          #sprawd? typ 'b' oraz 's'
-x=c(1:4,rev(1:4))
-y=c(3,2,2,3,3,4,4,3)
+x=c(1:3,rev(1:3))
+y=c(3,2,2,3,3,4)
 plot(x,y,type='l',lwd=4,col='red')   #lwd (line width)
 plot(x,y,type='l',lwd=4,col='red',xlab=NA,ylab='')  #xlab(labels) - etykiety
 
@@ -185,13 +185,13 @@ x=seq(-2,2,by=0.01)
 plot(x,x^2)
 plot(x,x^2,type='l')
 abline(1,-2)         #abline(a,b) dorysowuje do wykresu proste y=bx+a
-abline(h=2,col='red') #h-horizontal, v-vertical
+abline(h=0,col='red') #h-horizontal, v-vertical
 
 ##Cwiczenie 12.
 #Na ponizszych przykladach, sprawdz  dzialnie funkcji curve().
 curve(x^2,xlim=c(-2,2))
 curve(-x^2+3,col='red',add=T)  #add=TRUE pozwala dorysowa? kolejny wykres
-curve(sin(4*x)+1.5,lwd=3,lty=3,col='blue',add=T)
+curve(sin(4*x)+1.5,lwd=3,lty=4,col='orange',add=T)
                                #lty (line type), sprawd? 0,1,2,3,4
 
 #w przypadkku gestosci, dystrybuant - zamiast pisania wzoru funkcji
@@ -211,8 +211,12 @@ text(2,0.35,'wykres gestosci',col='pink')  #dodaje tekst zaczepiony w punkcie
 #==============================================================
 #Zadanie 4.
 #----------
-
-
+  #a) i b) N(1, 1), N(4, 1), N(0, 4), N(0, 9)
+  par(mfrow = c(2,2))
+  curve(dnorm(x, 1, 1), xlim = c(-4, 4), main = "N(1, 1)", xlab="x", ylab="y")
+  curve(dnorm(x, 4, 1), xlim = c(-4, 4), main = "N(4, 1)", xlab="x", ylab="y")
+  curve(dnorm(x, 0, 4), xlim = c(-4, 4), main = "N(0, 4)", xlab="x", ylab="y")
+  curve(dnorm(x, 0, 9), xlim = c(-4, 4), main = "N(0, 9)", xlab="x", ylab="y")
 
 #Przyklad 1
 #----------
@@ -230,19 +234,28 @@ curve(dnorm(x), col=2, add=T)  #gestosc N(0,1)
 hist(Y,prob=T)                  #histogram
 curve(dexp(x,5), col=2, add=T)  #gestosc Exp(5)
 
-#Zadanie 4.
-#----------
-
-
-
 #Zadanie 5.
 #----------
-
+X <- rnorm(1000, 0, 4^2)
+Y <- exp(X);
+hist(X, prob = TRUE)
+curve(dlnorm(x, 0, 4^2), col = "red", add = TRUE)
 
 #Zadanie 6.
 #----------
-
+X <- c()
+y <- c()
+for (sample in 1:1000) {
+  sample <- rnorm(100, 0, 1)
+  X <- c(X, sample)
+  y <- c(y, sum(sample^2))
+}
+hist(y, prob = TRUE)
+curve(dchisq(x, df=100), col = "red", add = TRUE)
 
 
 #Zadanie 7.
 #----------
+curve(dnorm(x, 0, 1), col = "red", xlim = c(-4, 4), main = "N(0, 1) i t(4)", xlab="x", ylab="y")
+curve(dt(x, 4),col = "blue", xlim = c(-4, 4), add = TRUE)
+legend(2, 0.3, legend = c("N(0, 1)", "t(4)"), col=c("red", "blue"), lty=1, cex=1)
