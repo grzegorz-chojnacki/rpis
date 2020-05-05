@@ -39,9 +39,6 @@ abline(a=0,b=1,col=2)
 #========
 #Dla roznych mu i sigma, wygeneruj N=1000 prob licznosci n=100: x1,x2,...,xn  z rozkładu N(mu,sigma^2)
 #i korzystajac z nich, wyznacz N: t1,t2,...,tN  mozliwych wartości zmiennej U. Korzystajac z testow diagnostycznych sprawdz teze Faktu 2.
-###
-### Dlaczego na slajdach wykładu został użyty kwantyl t-studenta = 2.26 = qt(1 - 0.05 / 2, 10-1)?
-###
 
 N=1000; n=100
 m=3; sigma=2
